@@ -1,10 +1,11 @@
 import cv2
+
 from memory import customer_memory
+from analytics import add_customer
 
 def process_behavior(
-    frame,
     tracks,
-    shelf_zone
+    zone
 ):
 
     for track in tracks:
@@ -27,79 +28,39 @@ def process_behavior(
             customer_memory[track_id] = {
 
                 "frames_seen":0,
-                "shelf_time":0,
-                "score":0
+                "zone":"walking"
 
             }
 
-        memory = customer_memory[track_id]
+        memory = customer_memory[
+            track_id
+        ]
 
         memory["frames_seen"] += 1
 
         inside = cv2.pointPolygonTest(
-            shelf_zone,
+            zone,
             (cx,cy),
             False
         )
 
-        action = "Walking"
-
         if inside >= 0:
 
-            action = "Browsing"
+            memory["zone"] = "browsing"
 
-            memory["shelf_time"] += 1
+        else:
 
-        if memory["shelf_time"] > 50:
+            memory["zone"] = "walking"
 
-            memory["score"] += 1
+        add_customer({
 
-            memory["shelf_time"] = 0
+            "customer_id":
+            track_id,
 
-        if memory["score"] >= 3:
+            "zone":
+            memory["zone"],
 
-            action = "Suspicious"
+            "time_seen":
+            memory["frames_seen"]
 
-        color = (0,255,0)
-
-        if action == "Suspicious":
-
-            color = (0,0,255)
-
-        cv2.rectangle(
-            frame,
-            (x1,y1),
-            (x2,y2),
-            color,
-            2
-        )
-
-        cv2.putText(
-            frame,
-            f"ID {track_id}",
-            (x1,y1-40),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            color,
-            2
-        )
-
-        cv2.putText(
-            frame,
-            action,
-            (x1,y1-15),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            (0,255,255),
-            2
-        )
-
-        cv2.putText(
-            frame,
-            f"Score:{memory['score']}",
-            (x1,y2+20),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.6,
-            (255,255,0),
-            2
-        )
+        })

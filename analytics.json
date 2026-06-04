@@ -1,0 +1,56 @@
+{
+    "timestamp": "2026-06-04 10:35:15.364779",
+    "customers": [
+        {
+            "customer_id": "1",
+            "zone": "browsing",
+            "time_seen": 189
+        },
+        {
+            "customer_id": "2",
+            "zone": "browsing",
+            "time_seen": 117
+        },
+        {
+            "customer_id": "1",
+            "zone": "browsing",
+            "time_seen": 190
+        },
+        {
+            "customer_id": "4",
+            "zone": "walking",
+            "time_seen": 138
+        },
+        {
+            "customer_id": "7",
+            "zone": "walking",
+            "time_seen": 76
+        },
+        {
+            "customer_id": "8",
+            "zone": "walking",
+            "time_seen": 76
+        },
+        {
+            "customer_id": "9",
+            "zone": "browsing",
+            "time_seen": 56
+        },
+        {
+            "customer_id": "10",
+            "zone": "walking",
+            "time_seen": 53
+        },
+        {
+            "customer_id": "12",
+            "zone": "walking",
+            "time_seen": 22
+        },
+        {
+            "customer_id": "13",
+            "zone": "walking",
+            "time_seen": 17
+        }
+    ],
+    "people_count": 10
+}

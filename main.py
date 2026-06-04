@@ -1,98 +1,165 @@
 import cv2
 
+from stream_ingestor import get_streams
 from detector import detect_people
 from tracker import track_people
 from behavior import process_behavior
+from analytics import reset, save
 from zones import SHELF_ZONE
 
-cap1 = cv2.VideoCapture(
-    "videos/shop.mp4"
-)
+print("Starting Retail AI...")
 
-cap2 = cv2.VideoCapture(
-    "videos/shop copy.mp4"
-)
+# ==========================================
+# LOAD STREAMS
+# ==========================================
+
+streams = get_streams()
+
+print("Streams Loaded")
+
+# ==========================================
+# MAIN LOOP
+# ==========================================
 
 while True:
 
-    ret1, frame1 = cap1.read()
-    ret2, frame2 = cap2.read()
+    reset()
 
-    if not ret1 or not ret2:
+    for camera_name, cap in streams.items():
+
+        print(f"\nProcessing {camera_name}")
+
+        # ----------------------------------
+        # READ FRAME
+        # ----------------------------------
+
+        ret, frame = cap.read()
+
+        print("Frame Read:", ret)
+
+        if not ret:
+            continue
+
+        # ----------------------------------
+        # RESIZE
+        # ----------------------------------
+
+        frame = cv2.resize(
+            frame,
+            (640, 360)
+        )
+
+        # ----------------------------------
+        # DETECTION
+        # ----------------------------------
+
+        print("Running Detection...")
+
+        detections = detect_people(
+            frame
+        )
+
+        print(
+            "Detections:",
+            len(detections)
+        )
+
+        # ----------------------------------
+        # TRACKING
+        # ----------------------------------
+
+        print("Running Tracking...")
+
+        tracks = track_people(
+            detections,
+            frame,
+            camera_name
+        )
+
+        print(
+            "Tracks:",
+            len(tracks)
+        )
+
+        # ----------------------------------
+        # BEHAVIOR
+        # ----------------------------------
+
+        print("Running Behavior...")
+
+        process_behavior(
+            tracks,
+            SHELF_ZONE
+        )
+
+        # ----------------------------------
+        # DRAW TRACKS
+        # ----------------------------------
+
+        for track in tracks:
+
+            if not track.is_confirmed():
+                continue
+
+            x1, y1, x2, y2 = map(
+                int,
+                track.to_ltrb()
+            )
+
+            track_id = track.track_id
+
+            cv2.rectangle(
+                frame,
+                (x1, y1),
+                (x2, y2),
+                (0, 255, 0),
+                2
+            )
+
+            cv2.putText(
+                frame,
+                f"ID {track_id}",
+                (x1, y1 - 10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (0, 255, 0),
+                2
+            )
+
+        # ----------------------------------
+        # DRAW SHELF ZONE
+        # ----------------------------------
+
+        cv2.polylines(
+            frame,
+            [SHELF_ZONE],
+            True,
+            (255, 0, 0),
+            2
+        )
+
+        # ----------------------------------
+        # SHOW
+        # ----------------------------------
+
+        cv2.imshow(
+            camera_name,
+            frame
+        )
+
+    save()
+
+    key = cv2.waitKey(1)
+
+    if key == 27:
         break
 
-    frame1 = cv2.resize(
-        frame1,
-        (640,360)
-    )
+# ==========================================
+# CLEANUP
+# ==========================================
 
-    frame2 = cv2.resize(
-        frame2,
-        (640,360)
-    )
+for cap in streams.values():
 
-    detections1 = detect_people(
-        frame1
-    )
-
-    detections2 = detect_people(
-        frame2
-    )
-
-    tracks1 = track_people(
-        detections1,
-        frame1,
-        1
-    )
-
-    tracks2 = track_people(
-        detections2,
-        frame2,
-        2
-    )
-
-    process_behavior(
-        frame1,
-        tracks1,
-        SHELF_ZONE
-    )
-
-    process_behavior(
-        frame2,
-        tracks2,
-        SHELF_ZONE
-    )
-
-    cv2.polylines(
-        frame1,
-        [SHELF_ZONE],
-        True,
-        (255,0,0),
-        2
-    )
-
-    cv2.polylines(
-        frame2,
-        [SHELF_ZONE],
-        True,
-        (255,0,0),
-        2
-    )
-
-    combined = cv2.hconcat([
-        frame1,
-        frame2
-    ])
-
-    cv2.imshow(
-        "Retail AI V2",
-        combined
-    )
-
-    if cv2.waitKey(1) == 27:
-        break
-
-cap1.release()
-cap2.release()
+    cap.release()
 
 cv2.destroyAllWindows()
