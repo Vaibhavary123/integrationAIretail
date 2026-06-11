@@ -11,7 +11,11 @@ def reset():
         datetime.now()
     )
 
+    analytics_data["people_count"] = 0
+
     analytics_data["customers"] = []
+
+    analytics_data["zone_summary"] = {}
 
 def add_customer(customer):
 
@@ -19,9 +23,29 @@ def add_customer(customer):
         customer
     )
 
+def update_zone_summary(customers):
+
+    zone_counts = {}
+
+    for customer in customers:
+
+        zone = customer["current_zone"]
+
+        if zone not in zone_counts:
+
+            zone_counts[zone] = 0
+
+        zone_counts[zone] += 1
+
+    analytics_data["zone_summary"] = zone_counts
+
 def save():
 
     analytics_data["people_count"] = len(
+        analytics_data["customers"]
+    )
+
+    update_zone_summary(
         analytics_data["customers"]
     )
 
