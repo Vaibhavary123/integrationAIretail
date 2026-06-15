@@ -7,8 +7,8 @@ from detector import detect_people
 from tracker import track_people
 from behavior import process_behavior
 from analytics import reset, save
-from events import save_events
 from zones import ZONES
+from events import save_events
 
 # ==========================================
 # LOGGING
@@ -220,9 +220,8 @@ while True:
     # ==========================================
     # SAVE EVENTS
     # ==========================================
-
+    save()
     save_events()
-
     # ==========================================
     # EXIT
     # ==========================================

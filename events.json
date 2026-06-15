@@ -1,1 +1,86 @@
-[]
+[
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "customer_entered",
+        "customer_id": 1,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "zone_changed",
+        "customer_id": 1,
+        "details": {
+            "zone": "walking"
+        }
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "customer_entered",
+        "customer_id": 2,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "zone_changed",
+        "customer_id": 2,
+        "details": {
+            "zone": "beverages"
+        }
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "customer_entered",
+        "customer_id": 3,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "zone_changed",
+        "customer_id": 3,
+        "details": {
+            "zone": "snacks"
+        }
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "customer_entered",
+        "customer_id": 4,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.384097",
+        "event_type": "zone_changed",
+        "customer_id": 4,
+        "details": {
+            "zone": "walking"
+        }
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.390042",
+        "event_type": "customer_entered",
+        "customer_id": 5,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:08.390042",
+        "event_type": "zone_changed",
+        "customer_id": 5,
+        "details": {
+            "zone": "beverages"
+        }
+    },
+    {
+        "timestamp": "2026-06-15 11:08:14.083672",
+        "event_type": "customer_entered",
+        "customer_id": 6,
+        "details": {}
+    },
+    {
+        "timestamp": "2026-06-15 11:08:14.083672",
+        "event_type": "zone_changed",
+        "customer_id": 6,
+        "details": {
+            "zone": "walking"
+        }
+    }
+]

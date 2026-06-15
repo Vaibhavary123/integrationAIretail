@@ -54,3 +54,87 @@
 2026-06-11 11:11:40,171 INFO - today given : No
 2026-06-11 11:11:40,171 INFO - in-build embedder : Yes
 2026-06-11 11:11:40,171 INFO - polygon detections : No
+2026-06-12 15:04:53,884 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-12 15:04:53,884 INFO - gpu enabled: False
+2026-06-12 15:04:53,884 INFO - half precision: False
+2026-06-12 15:04:53,884 INFO - max batch size: 16
+2026-06-12 15:04:53,884 INFO - expects BGR: True
+2026-06-12 15:04:54,073 INFO DeepSort Tracker initialised
+2026-06-12 15:04:54,073 INFO - max age: 30
+2026-06-12 15:04:54,073 INFO - appearance threshold: 0.3
+2026-06-12 15:04:54,073 INFO - nms threshold: OFF
+2026-06-12 15:04:54,073 INFO - max num of appearance features: None
+2026-06-12 15:04:54,073 INFO - overriding track class : No
+2026-06-12 15:04:54,073 INFO - today given : No
+2026-06-12 15:04:54,073 INFO - in-build embedder : Yes
+2026-06-12 15:04:54,073 INFO - polygon detections : No
+2026-06-12 15:04:54,507 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-12 15:04:54,507 INFO - gpu enabled: False
+2026-06-12 15:04:54,507 INFO - half precision: False
+2026-06-12 15:04:54,507 INFO - max batch size: 16
+2026-06-12 15:04:54,507 INFO - expects BGR: True
+2026-06-12 15:04:54,576 INFO DeepSort Tracker initialised
+2026-06-12 15:04:54,577 INFO - max age: 30
+2026-06-12 15:04:54,577 INFO - appearance threshold: 0.3
+2026-06-12 15:04:54,577 INFO - nms threshold: OFF
+2026-06-12 15:04:54,577 INFO - max num of appearance features: None
+2026-06-12 15:04:54,577 INFO - overriding track class : No
+2026-06-12 15:04:54,577 INFO - today given : No
+2026-06-12 15:04:54,577 INFO - in-build embedder : Yes
+2026-06-12 15:04:54,577 INFO - polygon detections : No
+2026-06-12 15:12:01,223 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-12 15:12:01,225 INFO - gpu enabled: False
+2026-06-12 15:12:01,225 INFO - half precision: False
+2026-06-12 15:12:01,225 INFO - max batch size: 16
+2026-06-12 15:12:01,225 INFO - expects BGR: True
+2026-06-12 15:12:01,394 INFO DeepSort Tracker initialised
+2026-06-12 15:12:01,394 INFO - max age: 30
+2026-06-12 15:12:01,394 INFO - appearance threshold: 0.3
+2026-06-12 15:12:01,394 INFO - nms threshold: OFF
+2026-06-12 15:12:01,394 INFO - max num of appearance features: None
+2026-06-12 15:12:01,394 INFO - overriding track class : No
+2026-06-12 15:12:01,394 INFO - today given : No
+2026-06-12 15:12:01,394 INFO - in-build embedder : Yes
+2026-06-12 15:12:01,394 INFO - polygon detections : No
+2026-06-12 15:12:01,780 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-12 15:12:01,780 INFO - gpu enabled: False
+2026-06-12 15:12:01,780 INFO - half precision: False
+2026-06-12 15:12:01,780 INFO - max batch size: 16
+2026-06-12 15:12:01,780 INFO - expects BGR: True
+2026-06-12 15:12:01,835 INFO DeepSort Tracker initialised
+2026-06-12 15:12:01,835 INFO - max age: 30
+2026-06-12 15:12:01,835 INFO - appearance threshold: 0.3
+2026-06-12 15:12:01,835 INFO - nms threshold: OFF
+2026-06-12 15:12:01,835 INFO - max num of appearance features: None
+2026-06-12 15:12:01,835 INFO - overriding track class : No
+2026-06-12 15:12:01,835 INFO - today given : No
+2026-06-12 15:12:01,835 INFO - in-build embedder : Yes
+2026-06-12 15:12:01,835 INFO - polygon detections : No
+2026-06-15 11:08:07,124 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-15 11:08:07,124 INFO - gpu enabled: False
+2026-06-15 11:08:07,126 INFO - half precision: False
+2026-06-15 11:08:07,126 INFO - max batch size: 16
+2026-06-15 11:08:07,126 INFO - expects BGR: True
+2026-06-15 11:08:07,292 INFO DeepSort Tracker initialised
+2026-06-15 11:08:07,292 INFO - max age: 30
+2026-06-15 11:08:07,292 INFO - appearance threshold: 0.3
+2026-06-15 11:08:07,292 INFO - nms threshold: OFF
+2026-06-15 11:08:07,292 INFO - max num of appearance features: None
+2026-06-15 11:08:07,292 INFO - overriding track class : No
+2026-06-15 11:08:07,292 INFO - today given : No
+2026-06-15 11:08:07,294 INFO - in-build embedder : Yes
+2026-06-15 11:08:07,294 INFO - polygon detections : No
+2026-06-15 11:08:07,685 INFO MobileNetV2 Embedder for Deep Sort initialised
+2026-06-15 11:08:07,685 INFO - gpu enabled: False
+2026-06-15 11:08:07,685 INFO - half precision: False
+2026-06-15 11:08:07,685 INFO - max batch size: 16
+2026-06-15 11:08:07,685 INFO - expects BGR: True
+2026-06-15 11:08:07,815 INFO DeepSort Tracker initialised
+2026-06-15 11:08:07,815 INFO - max age: 30
+2026-06-15 11:08:07,815 INFO - appearance threshold: 0.3
+2026-06-15 11:08:07,815 INFO - nms threshold: OFF
+2026-06-15 11:08:07,815 INFO - max num of appearance features: None
+2026-06-15 11:08:07,815 INFO - overriding track class : No
+2026-06-15 11:08:07,815 INFO - today given : No
+2026-06-15 11:08:07,815 INFO - in-build embedder : Yes
+2026-06-15 11:08:07,815 INFO - polygon detections : No

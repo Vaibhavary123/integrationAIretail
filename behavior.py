@@ -3,6 +3,7 @@ import cv2
 from memory import customer_memory
 from analytics import add_customer
 from zones import ZONES
+from events import add_event
 
 
 def process_behavior(tracks):
@@ -48,20 +49,46 @@ def process_behavior(tracks):
 
                 "shelf_frames": 0,
 
-                "last_zone": None
+                "last_zone": None,
+
+                "journey": [],
+
+                "positions": []
 
             }
+
+            add_event(
+
+                "customer_entered",
+
+                track_id
+
+            )
 
         memory = customer_memory[track_id]
 
         # =====================================
-        # TOTAL TIME IN STORE
+        # TOTAL TIME
         # =====================================
 
         memory["frames_seen"] += 1
 
         # =====================================
-        # FIND CURRENT ZONE
+        # SAVE POSITION
+        # =====================================
+
+        memory["positions"].append(
+
+            (cx, cy)
+
+        )
+
+        if len(memory["positions"]) > 1000:
+
+            memory["positions"].pop(0)
+
+        # =====================================
+        # DETERMINE CURRENT ZONE
         # =====================================
 
         current_zone = "walking"
@@ -69,9 +96,13 @@ def process_behavior(tracks):
         for zone_name, zone_poly in ZONES.items():
 
             inside = cv2.pointPolygonTest(
+
                 zone_poly,
+
                 (cx, cy),
+
                 False
+
             )
 
             if inside >= 0:
@@ -85,7 +116,35 @@ def process_behavior(tracks):
         memory["current_zone"] = current_zone
 
         # =====================================
-        # SIMPLE PICKUP DETECTION
+        # ZONE CHANGE EVENT
+        # =====================================
+
+        if current_zone != memory["last_zone"]:
+
+            add_event(
+
+                "zone_changed",
+
+                track_id,
+
+                {
+
+                    "zone": current_zone
+
+                }
+
+            )
+
+            memory["journey"].append(
+
+                current_zone
+
+            )
+
+            memory["last_zone"] = current_zone
+
+        # =====================================
+        # PICKUP DETECTION
         # =====================================
 
         if current_zone != "walking":
@@ -94,13 +153,25 @@ def process_behavior(tracks):
 
         else:
 
-            # customer left shelf area
-
             if memory["shelf_frames"] > 40:
 
                 memory["pickups"] += 1
 
                 memory["picked_item"] = True
+
+                add_event(
+
+                    "item_pickup",
+
+                    track_id,
+
+                    {
+
+                        "zone": current_zone
+
+                    }
+
+                )
 
             memory["shelf_frames"] = 0
 
@@ -109,32 +180,42 @@ def process_behavior(tracks):
         # =====================================
 
         most_visited_area = max(
+
             memory["zones"],
+
             key=memory["zones"].get
+
         )
 
         # =====================================
         # SAVE ANALYTICS
         # =====================================
 
-        add_customer({
+        add_customer(
 
-            "customer_id":
-            int(track_id),
+            {
 
-            "time_in_store":
-            int(memory["frames_seen"]),
+                "customer_id":
+                int(track_id),
 
-            "current_zone":
-            current_zone,
+                "time_in_store":
+                int(memory["frames_seen"]),
 
-            "most_visited_area":
-            most_visited_area,
+                "current_zone":
+                current_zone,
 
-            "picked_item":
-            memory["picked_item"],
+                "most_visited_area":
+                most_visited_area,
 
-            "pickups":
-            int(memory["pickups"])
+                "picked_item":
+                memory["picked_item"],
 
-        })
+                "pickup_count":
+                int(memory["pickups"]),
+
+                "journey":
+                memory["journey"]
+
+            }
+
+        )
