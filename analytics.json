@@ -1,43 +1,54 @@
 {
-    "timestamp": "2026-06-15 11:08:16.164860",
-    "people_count": 6,
+    "timestamp": "2026-06-19 13:37:14.439098",
+    "people_count": 9,
     "customers": [
         {
             "customer_id": 1,
-            "time_in_store": 35,
-            "current_zone": "walking",
+            "time_in_store": 89,
+            "current_zone": "beverages",
             "most_visited_area": "snacks",
             "picked_item": false,
             "pickup_count": 0,
             "journey": [
-                "walking"
+                "walking",
+                "snacks",
+                "beverages",
+                "snacks",
+                "beverages",
+                "snacks"
             ]
         },
         {
-            "customer_id": 2,
-            "time_in_store": 35,
-            "current_zone": "beverages",
-            "most_visited_area": "beverages",
-            "picked_item": false,
-            "pickup_count": 0,
-            "journey": [
-                "beverages"
-            ]
-        },
-        {
-            "customer_id": 3,
-            "time_in_store": 35,
+            "customer_id": 1,
+            "time_in_store": 90,
             "current_zone": "snacks",
             "most_visited_area": "snacks",
             "picked_item": false,
             "pickup_count": 0,
             "journey": [
+                "walking",
+                "snacks",
+                "beverages",
+                "snacks",
+                "beverages",
                 "snacks"
             ]
         },
         {
+            "customer_id": 2,
+            "time_in_store": 88,
+            "current_zone": "walking",
+            "most_visited_area": "beverages",
+            "picked_item": true,
+            "pickup_count": 1,
+            "journey": [
+                "beverages",
+                "walking"
+            ]
+        },
+        {
             "customer_id": 4,
-            "time_in_store": 35,
+            "time_in_store": 88,
             "current_zone": "walking",
             "most_visited_area": "snacks",
             "picked_item": false,
@@ -48,7 +59,7 @@
         },
         {
             "customer_id": 5,
-            "time_in_store": 35,
+            "time_in_store": 88,
             "current_zone": "beverages",
             "most_visited_area": "beverages",
             "picked_item": false,
@@ -58,8 +69,41 @@
             ]
         },
         {
-            "customer_id": 6,
-            "time_in_store": 11,
+            "customer_id": 7,
+            "time_in_store": 26,
+            "current_zone": "walking",
+            "most_visited_area": "snacks",
+            "picked_item": false,
+            "pickup_count": 0,
+            "journey": [
+                "walking"
+            ]
+        },
+        {
+            "customer_id": 8,
+            "time_in_store": 26,
+            "current_zone": "snacks",
+            "most_visited_area": "snacks",
+            "picked_item": false,
+            "pickup_count": 0,
+            "journey": [
+                "snacks"
+            ]
+        },
+        {
+            "customer_id": 9,
+            "time_in_store": 6,
+            "current_zone": "walking",
+            "most_visited_area": "snacks",
+            "picked_item": false,
+            "pickup_count": 0,
+            "journey": [
+                "walking"
+            ]
+        },
+        {
+            "customer_id": 10,
+            "time_in_store": 3,
             "current_zone": "walking",
             "most_visited_area": "snacks",
             "picked_item": false,
@@ -70,8 +114,8 @@
         }
     ],
     "zone_summary": {
-        "walking": 3,
         "beverages": 2,
-        "snacks": 1
+        "snacks": 2,
+        "walking": 5
     }
 }
